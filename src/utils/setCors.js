@@ -2,7 +2,7 @@ const setCorsHeaders = (request, uuid, response, config) => {
   const corsConfig = config instanceof Object ? config : false
 
   response.headers.set('correlation-id',request.headers.get("cf-ray"))
-  response.headers.set('uuid',uuid)
+  response.headers.set('uuid', uuid)
   response.headers.set(
     'Access-Control-Allow-Credentials',
     corsConfig ? corsConfig.allowCredentials : 'true',
