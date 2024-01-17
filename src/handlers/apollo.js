@@ -57,7 +57,7 @@ const createServer = (graphQLOptions) =>
 
 // moved to global memory
 const server = createServer(graphQLOptions)
-await server.start()
+server.start()
 
 const handler = async (request, uuid) => {  
   return graphqlCloudflare(() => server.createGraphQLServerOptions(request))(
