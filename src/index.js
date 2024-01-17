@@ -5,9 +5,15 @@ const setCors = require('./utils/setCors')
 
 
 const handleRequest = async (request) => {
-   const response = await apollo(request)
-   setCors(response, true)
-   return response
+   try{
+      const response = await apollo(request)
+      setCors(response, true)
+      return response
+   } catch (err) {
+    return new Response(err, {
+      status: 500,
+    })
+  }
 }
 
 addEventListener('fetch', (event) => {
