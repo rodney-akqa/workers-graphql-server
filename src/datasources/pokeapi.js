@@ -7,7 +7,11 @@ class PokemonAPI extends RESTDataSource {
   }
 
   async getPokemon(id) {
-    return this.get(`pokemon/${id}`)
+    const pokemon = await this.get(`pokemon/${id}`);
+    
+    pokemon.threadId = uuid ?? ''; // Replace 'value' with the actual value you want to add
+
+    return pokemon;
   }
 }
 
