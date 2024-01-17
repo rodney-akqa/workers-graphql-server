@@ -9,7 +9,7 @@ const resolvers = require('../resolvers')
 const typeDefs = require('../schema')
 
 const dataSources = () => ({
-  pokemonAPI: new PokemonAPI(uuid),
+  pokemonAPI: new PokemonAPI(this.uuid),
 })
 
 const kvCache = { cache: new KVCache() }
@@ -60,6 +60,7 @@ const server = createServer(graphQLOptions)
 server.start()
 
 const handler = async (request, uuid) => {  
+  this.uuid = uuid;
   return graphqlCloudflare(() => server.createGraphQLServerOptions(request))(
     request,
   )

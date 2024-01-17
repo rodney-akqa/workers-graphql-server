@@ -12,7 +12,7 @@ const uuid = uuidv4();
 
 const handleRequest = async (request) => {
   try {
-    const response = await apollo(request)
+    const response = await apollo(request, uuid)
     setCors(request, uuid, response, true)
     return response
   } catch (err) {
