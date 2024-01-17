@@ -23,8 +23,10 @@ const createServer = (graphQLOptions) =>
     ...(graphQLOptions.kvCache ? kvCache : {}),
   })
 
+// moved to global memory
+const server = createServer(graphQLOptions)
+
 const handler = async (request, graphQLOptions) => {
-  const server = createServer(graphQLOptions)
   await server.start()
   return graphqlCloudflare(() => server.createGraphQLServerOptions(request))(
     request,
